@@ -21,5 +21,3 @@ class CommentViewset(ModelViewSet):
     def perform_create(self, serializer):
         # Automatically assign the currently authenticated user as the user for the comment
         serializer.save(user=self.request.user if self.request.user.is_authenticated else None)  # noqa: E501
-
-
