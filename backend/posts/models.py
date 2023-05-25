@@ -1,5 +1,5 @@
 from django.db import models
-from backend.users.models import User
+from users.models import User
 
 
 class Post(models.Model):
@@ -10,6 +10,9 @@ class Post(models.Model):
     dislikes = models.IntegerField(blank=True, default=0)
     creation_date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -18,4 +21,7 @@ class Comment(models.Model):
     likes = models.IntegerField(blank=True, default=0)
     dislikes = models.IntegerField(blank=True, default=0)
     creation_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content
     

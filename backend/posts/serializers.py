@@ -1,15 +1,14 @@
 from rest_framework.serializers import ModelSerializer
-from models import Post, Comment
+from .models import Post, Comment
 
 
 class PostSerializer(ModelSerializer):
     class Meta:
         model = Post
-        fields = "__all__"
-        depth = 1
+        exclude = ["likes", "dislikes", "creation_date"]
 
 
 class CommentSerializer(ModelSerializer):
     class Meta:
         model = Comment
-        fields = "__all__"
+        exclude = ["likes", "dislikes"]
